@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
 
-@Component({
+@Component({//decorator
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-tour-of-heroes';
+  title:string = 'angular-tour-of-heroes';
+
+
+  getAppName():string{
+    return this.title;
+  }
 }
