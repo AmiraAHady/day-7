@@ -14,8 +14,13 @@ export class MoviesService {
   rate: any = [];
 
   constructor(private http:HttpClient) {}
-  getallMovies(moveLan:string):Observable<any> {
-    return this.http.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=0ab69d58b9382bc390a939b7dbbe713b&language=${moveLan}&page=1`);
+  getallMovies(moveLan:string,pageNumber:number):Observable<any> {
+    return this.http.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=0ab69d58b9382bc390a939b7dbbe713b&language=${moveLan}&page=${pageNumber}`);
+  }
+
+
+  getMovieById(movieId:any):Observable<any>{
+    return this.http.get(`https://api.themoviedb.org/3/movie/${movieId}?api_key=0ab69d58b9382bc390a939b7dbbe713b&language=en-US`)
   }
 
   // getMovieRating(movId: number) {

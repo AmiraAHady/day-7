@@ -10,6 +10,7 @@ import { IMovie } from './IMovie';
 export class MoviesComponent implements OnInit {
   childMessage: string = '';
   websiteLang: string = 'en-US';
+  pageNumber: number = 1;
   //  myobject:MoviesService=new MoviesService()
   allMovies: IMovie[] = [];
   filterdMovies: IMovie[] = [];
@@ -22,10 +23,12 @@ export class MoviesComponent implements OnInit {
   set searchValue(data: string) {
     this._searchFilter = data;
     // this.filterdMovies = this.searchMovies(data);
-    this.movsService.searchMovies(data).subscribe({next:(searchData)=>{
-      // console.log(searchData.results);
-      this.filterdMovies =searchData.results
-    }})
+    this.movsService.searchMovies(data).subscribe({
+      next: (searchData) => {
+        // console.log(searchData.results);
+        this.filterdMovies = searchData.results;
+      },
+    });
   }
   constructor(private movsService: MoviesService) {
     console.log('inside constructor');
@@ -37,7 +40,7 @@ export class MoviesComponent implements OnInit {
     // this.myobject.sayhello()
     // this.movsService.sayhello()
 
-    this.movsService.getallMovies(this.websiteLang).subscribe({
+    this.movsService.getallMovies(this.websiteLang, this.pageNumber).subscribe({
       next: (moviesdata) => {
         console.log(moviesdata.results);
         this.allMovies = moviesdata.results;
@@ -72,7 +75,24 @@ export class MoviesComponent implements OnInit {
 
   changeLang() {
     this.websiteLang = this.websiteLang == 'en-US' ? 'ar-SA' : 'en-US';
-    this.movsService.getallMovies(this.websiteLang).subscribe({
+    this.callMovieList()
+  }
+
+  goNext() {
+    ++this.pageNumber;
+    this.callMovieList()
+  }
+  goPrev() {
+    if (this.pageNumber > 1) {
+      --this.pageNumber;
+      this.callMovieList()
+    }
+  }
+
+  callMovieList(){
+    this.movsService
+    .getallMovies(this.websiteLang, this.pageNumber)
+    .subscribe({
       next: (moviesdata) => {
         console.log(moviesdata.results);
         this.allMovies = moviesdata.results;

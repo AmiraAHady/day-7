@@ -1,5 +1,17 @@
 
-<button class="btn btn-warning" (click)="changeLang()">{{websiteLang}}</button>
+<div class="container mx-auto mt-5" style="width: 400px;">
+  <button class="btn btn-warning" (click)="changeLang()">
+    {{ websiteLang }}
+  </button>
+  <button class="btn btn-success mx-3" (click)="goPrev()">
+    Previous
+  </button>
+  <button class="btn btn-success" (click)="goNext()">
+    Next
+  </button>
+</div>
+
+
 <div class="container mt-5">
   <input
     type="text"
@@ -9,27 +21,38 @@
   />
 </div>
 
-<h4>{{childMessage}}</h4>
+<h4>{{ childMessage }}</h4>
 
 <div class="container mt-5">
   <div class="row">
-    <div class="card col-3 " *ngFor="let movie of filterdMovies" style="width: 18rem">
-      <img class="card-img-top" [src]="'https://image.tmdb.org/t/p/w500'+movie.poster_path" alt="Card image cap" />
+    <div
+      class="card col-3"
+      *ngFor="let movie of filterdMovies"
+      style="width: 18rem"
+    >
+      <a [routerLink]="['/movieDetails',movie.id]">
+        <img
+          class="card-img-top"
+          [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+          alt="Card image cap"
+        />
+      </a>
       <div class="card-body">
-        <h5 class="card-title">{{movie.title|uppercase}}</h5>
+        <h5 class="card-title">{{ movie.title | uppercase }}</h5>
         <p class="card-text" *ngIf="movie.show">
-          {{movie.overview}}
+          {{ movie.overview }}
         </p>
-        <p>{{movie.ticket_Price|currency}}</p>
-        <p>{{movie.release_date|date}}</p>
-        <p>{{movie.movie_rating/2}}</p>
+        <p>{{ movie.ticket_Price | currency }}</p>
+        <p>{{ movie.release_date | date }}</p>
+        <p>{{ movie.movie_rating / 2 }}</p>
         <!-- <app-stars [movieId]="movie.id" ></app-stars> -->
         <!-- <app-stars  [rating]="movie.movie_rating" (ratingClicked)="acceptChildMessage($event)"></app-stars> -->
         <!-- <p>{{myMovie.rating}}</p> -->
         <!-- <button href="#" class="btn btn-info" [disabled]="myMovie.notAvaliabl" (click)="getMovieTitle()">Watch Movie</button> -->
-        <button class="btn btn-info" >Watch</button>
-        <button class="btn btn-info" (click)="toogleDiscription(movie.id)">{{movie.show?'Hide':'Show'}}</button>
-
+        <button class="btn btn-info">Watch</button>
+        <button class="btn btn-info" (click)="toogleDiscription(movie.id)">
+          {{ movie.show ? "Hide" : "Show" }}
+        </button>
       </div>
     </div>
   </div>

@@ -16,13 +16,13 @@
       <div class="collapse navbar-collapse" id="navbarExample01">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item active">
-            <a class="nav-link" aria-current="page" href="#">Movies</a>
+            <a class="nav-link" aria-current="page" routerLink="/movies">Movies</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Top Rated</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" routerLink="/tvs">TVshows</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Watch</a>
@@ -63,5 +63,7 @@
   </div> -->
 
   <!-- <button class="btn btn-primary" *ngIf="true">Click me</button> -->
-  <app-movies></app-movies>
+  <!-- <app-movies></app-movies> -->
+  <!-- <app-tvshows></app-tvshows> -->
+  <router-outlet></router-outlet>
 </body>

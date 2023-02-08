@@ -8,13 +8,19 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { MoviesComponent } from './movies/movies.component';
 import { StarsComponent } from './stars/stars.component';
+import { TvshowsComponent } from './tvshows/tvshows.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MoviesComponent,
-    StarsComponent
+    StarsComponent,
+    TvshowsComponent,
+    PageNotFoundComponent,
+    MoviedetailsComponent
   ],
   imports: [
     BrowserModule,
