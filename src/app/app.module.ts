@@ -11,6 +11,8 @@ import { StarsComponent } from './stars/stars.component';
 import { TvshowsComponent } from './tvshows/tvshows.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
     StarsComponent,
     TvshowsComponent,
     PageNotFoundComponent,
-    MoviedetailsComponent
+    MoviedetailsComponent,
+    ProductsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
